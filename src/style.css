@@ -1,7 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+body{
+    font-family: "Lexend", sans-serif;
+}
+
+
+@font-face{
+font-family: batman;
+src: url("../fonts/batmfo__.ttf");
+}
+
+@custom-variant dark (&: is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -118,4 +128,3 @@
     @apply bg-background text-foreground;
   }
 }
-
