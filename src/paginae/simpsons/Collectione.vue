@@ -3,6 +3,7 @@
 import {Card, CardContent} from'@/components/ui/card'
 import { computed, isReactive, ref } from 'vue';
 import { characters, type Character } from './data';
+import { router } from '@/router';
 
 
 
@@ -26,7 +27,7 @@ const paginaNumeri: number[] = [...Array(totalPaginae) ].map((_, i) => i + 1)
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center gap-8 w-full max-w-[1400px] my-8">
+    <div class="flex flex-col items-center justify-center gap-8 w-full max-w-[1400px] my-8 mx-auto">
 
         <div class="text-center">
             <h1 class="font-bold text-xl lg:text-5xl mb-5">
@@ -41,7 +42,10 @@ const paginaNumeri: number[] = [...Array(totalPaginae) ].map((_, i) => i + 1)
             class="cursor-pointer w-[220px] h-[240px] hover:bg-[#ee3133] hover:text-white transition-colors"
             v-for="character in listaSimpsons"
             >
-                <CardContent class="flex flex-col items-center gap-1 w-full px-0">
+                <CardContent
+                 class="flex flex-col items-center gap-1 w-full px-0"
+                 @click="router.push(`/simpsons/gallery/${character.id}`)"
+                >
                     <img 
                     :src="`/imagines/simpsons/${character.imago}`" alt=""
                     class="w-48 h-42 object-cover object-top mt-2 bg-[#ffde00] rounded-t-md border border-black"

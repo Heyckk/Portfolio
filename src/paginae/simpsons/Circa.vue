@@ -16,7 +16,7 @@ const imagoCirca= ref<string>('lisa.png')
             alt=""
             @mouseenter="imagoCirca='marge.png'"
             @mouseleave="imagoCirca='lisa.png'"
-            >
+            />
         </figure>
 
             <div class="flex flex-col gap-4 order-1 text-center lg:text-left">
