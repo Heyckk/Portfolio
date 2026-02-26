@@ -27,7 +27,9 @@ const character = ref<Character | undefined>(
                         {{ character.descriptione }}
                     </p>
                         
-                <div class="arca-quote">
+                <div class="arca-quote"
+                @click="router.push('/simpsons/gallery')"
+                >
                     <p class="quote"> 
                         {{ character.quote }}
                     </p>
