@@ -19,7 +19,7 @@
     SOBRE MÍ
     </p>
 
-     <p class="text-1xl md:text-1xl text-indigo-900 font-bold px-8 md:px-12 pt-20 transition-all z-20 relative">
+     <p class="text-1xl w-1/2 md:text-1xl text-indigo-900 font-bold px-8 md:px-12 pt-20 transition-all z-20 relative">
     Hola! Soy Elena, una estudiante de 19 años que intenta crear cosas, dejar huella con sus trabajos y diseños en este gran mundo. Me encuentro en el segundo años de Diseño y Tecnologías Creativas en la UPV donde me formo como diseñadora gráfica, ilustradora, directora creativa y muchas más cosas. Mi estilo es muy flexible y puede adaptarse a lo que el cliente pida, aunque me caracterizo por colores vivos y alegres. He participado fuera del ámbito universitario en proyectos muy diversos, incluyendo diseño de logos, cortometrajes y fotografía, encargos de ilustraciones y portadas de libros. Creo que la esencia e historia detrás de cada proyecto es única y merece ser vista.
 
 Te invito a tomarte un momento para explorar mi porfolio, donde podrás encontrar una selección de algunos de mis trabajos. Si estás interesad@ en trabajar juntos o tienes alguna pregunta, me encantaría escucharte. Gracias por visitar mi porfolio!
