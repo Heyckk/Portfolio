@@ -44,7 +44,7 @@ const props = withDefaults(defineProps<Props>(), {
                             <CardContent class="bg-gray-900 flex aspect-6/4 items-center justify-center p-6">
                             
                             <img 
-                                :src="`${props.basePath} /${photo}.jpg`" 
+                                :src="`${props.basePath}/${photo}.jpg`" 
                                 :alt="`Image ${index + 1}`"
                                 class="w-full h-full object-cover"
                             >

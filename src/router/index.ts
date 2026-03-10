@@ -8,6 +8,11 @@ import Layout from "@/paginae/simpsons/Layout.vue";
 import Circa from "@/paginae/simpsons/Circa.vue";
 import Collectione from "@/paginae/simpsons/Collectione.vue";
 import Character from "@/paginae/simpsons/Character.vue";
+import Carpeta4 from "@/paginae/Carpeta4/Carpeta4.vue";
+import Carpeta5 from "@/paginae/Carpeta5/Carpeta5.vue";
+import Carpeta6 from "@/paginae/Carpeta6/Carpeta6.vue";
+import Broma from "@/paginae/Broma/Broma.vue";
+
 
 
 
@@ -69,6 +74,26 @@ routes: [
 {
    path: '/:pathMatch(.*)*',
    redirect: '/'
-}
+},
+{
+   path: '/Carpeta4',
+   name: 'Carpeta 4',
+   component: Carpeta4
+},
+{
+   path: '/Carpeta5',
+   name: 'Carpeta 5',
+   component: Carpeta5
+},
+{
+   path: '/Carpeta6',
+   name: 'Carpeta 6',
+   component: Carpeta6
+},
+{
+   path: '/Broma',
+   name: 'Broma',
+   component: Broma
+},
 ]
 })

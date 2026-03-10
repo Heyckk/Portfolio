@@ -35,7 +35,6 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { Toggle } from '@/components/ui/toggle'
 import CarrusImaginum from '@/components/CarrusImaginum.vue';
 import { scrollToSection } from '@/utils/scrollToSection';
-import { useMouseMotio } from '@/composables/useMouseMotio'
 
 
 
@@ -45,14 +44,21 @@ import { useMouseMotio } from '@/composables/useMouseMotio'
 
 const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
 
-const {cumMouseMove, cumMouseLeave, mousePositione} = useMouseMotio()
 
+interface Coordinatas {
+    x: number
+    y: number
+}
 
 
 
 const dies = ref<DateValue>()
 
     const videreMenu = ref<boolean>(true)
+
+
+        const mousePositione= ref <Coordinatas>({x: 0, y:0})
+
 
 
         const handleResize = () => {
@@ -72,7 +78,24 @@ const dies = ref<DateValue>()
             window.removeEventListener ('resize', handleResize)
         })
 
-        
+        const cumMouseMove = (e: MouseEvent) => {
+            const rect = (e.target as HTMLElement).getBoundingClientRect()
+
+            const centerX = rect.width/2
+            const centerY = rect.height/2
+
+            const mouseX = e.clientX - rect.left
+            const mouseY = e.clientY - rect.top
+
+            mousePositione.value = {
+                x: (centerX - mouseX) * 0.1,
+                y: (centerY - mouseY) * 0.1
+            }
+        }
+
+        const cumMouseLeave= () => {
+            mousePositione.value= { x: 0, y: 0 }
+        }
 
 
 </script>
@@ -147,9 +170,9 @@ const dies = ref<DateValue>()
     @mousemove="cumMouseMove"
     @mouseleave="cumMouseLeave"
     :style="{
-        backgroundPositionX: `calc(50% + ${ mousePositione.x} px)` ,
-        backgroundPositionY: `calc(50% + ${ mousePositione.y} px)` ,
-        transition: 'background-position 0.1s ease-out'
+        backgroundPositionX: `calc(50% + ${mousePositione.x}px)` ,
+        backgroundPositionY: `calc(50% + ${mousePositione.y}px)` ,
+        transition: 'background-position 0.1s ease'
     }"
     ></div>
 
