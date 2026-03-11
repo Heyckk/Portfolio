@@ -1,11 +1,10 @@
-import{ Button} from '@/components/ui/button'
-
-
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const offsetX = ref(0)
 const offsetY = ref(0)
+
+const duckAudio = ref<HTMLAudioElement | null>(null)
 
 const handleMouseMove = (e: MouseEvent) => {
   const { innerWidth, innerHeight } = window
@@ -13,22 +12,29 @@ const handleMouseMove = (e: MouseEvent) => {
   const x = e.clientX
   const y = e.clientY
 
-  // Centro de la pantalla
+
   const centerX = innerWidth / 2
   const centerY = innerHeight / 2
 
-  // Movimiento invertido y suavizado
+
   offsetX.value = (centerX - x) * 0.02
   offsetY.value = (centerY - y) * 0.02
 }
 
 onMounted(() => {
+  duckAudio.value = new Audio('/sounds/quack.mp3')
   window.addEventListener('mousemove', handleMouseMove)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('mousemove', handleMouseMove)
 })
+
+const quack = () => {
+  const audio = new Audio('/sounds/quack.mp3')
+  audio.volume = 0.5 
+  audio.play().catch(err => console.log('Error reproduciendo audio:', err))
+}
 </script>
 
 
@@ -44,7 +50,7 @@ onBeforeUnmount(() => {
 
     
 
-    <p class="titulo-porfolio justify-start -top-80 text-lg text-[#000042] font-bold md:text-2xl transition-all z-20 relative">
+    <p class="titulo-porfolio justify-start -top-80 text-lg text-indigo-900 font-bold md:text-2xl transition-all z-20 relative">
     Porfolio
     </p>
 
@@ -58,35 +64,11 @@ onBeforeUnmount(() => {
                 alt="Carpeta"
                 class="w-20 h-20 object-contain"
             >
-            <span class="text-indigo-900 font-bold text-bold leading-none ">Sí o No</span>
+            <span class="text-indigo-900 font-bold text-bold leading-none ">Ilustraciones</span>
             </RouterLink>
         </Button>
 
-        <Button 
-                class="absolute top-60 right-32 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl"
-            >
-            <RouterLink to="/batman" class="flex flex-col items-center">
-            <img 
-                src="/imagines/Carpeti.png" 
-                alt="Carpeta"
-                class="w-20 h-20 object-contain"
-            >
-             <span class="text-indigo-900 font-bold leading-none">Batman</span>
-            </RouterLink>
-        </Button>
 
-       <Button 
-                 class="absolute top-160 right-5 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl"
-            >
-            <RouterLink to="/simpsons" class="flex flex-col items-center">
-            <img 
-                src="/imagines/Carpeti.png" 
-                alt="Carpeta"
-                class="w-20 h-20 object-contain"
-            >
-            <span class="text-indigo-900 font-bold leading-none">Simpsons</span>
-            </RouterLink>
-        </Button>
 
         <Button 
                 class="absolute top-50 left-100 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl"
@@ -102,7 +84,7 @@ onBeforeUnmount(() => {
         </Button>
 
         <Button 
-                class="absolute bottom-70 right-120 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl"
+                class="absolute bottom-50 right-120 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl"
             >
             <RouterLink to="/Carpeta5" class="flex flex-col items-center">
                 <img 
@@ -114,21 +96,9 @@ onBeforeUnmount(() => {
             </RouterLink>
         </Button>
 
-        <Button 
-                class="absolute top-10 left-40 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl -translate-x-1/2"
-            >
-            <RouterLink to="/Carpeta6" class="flex flex-col items-center">
-                <img 
-                    src="/imagines/Carpeti.png" 
-                    alt="Carpeta"
-                    class="w-20 h-20 object-contain"
-                >
-                <span class="mt-1 text-indigo-900 font-bold leading-none">Carpeta 6</span>
-            </RouterLink>
-        </Button>
 
           <Button 
-                class="absolute bottom-10 left-20 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl -translate-x-1/2"
+                class="absolute bottom-110 right-10 flex flex-col items-center bg-transparent hover:bg-blue-500/20 hover:scale-105 transition-all duration-200 p-2 rounded-xl -translate-x-1/2"
             >
             <RouterLink to="/Broma" class="flex flex-col items-center">
                 <img 
@@ -140,15 +110,21 @@ onBeforeUnmount(() => {
             </RouterLink>
         </Button>
 
-        
+      <div @click="quack">
+  <img 
+    src="/imagines/Pato.PNG" 
+    class="absolute top-15 left-10 w-30 h-30 rotate-12 object-contain bg-transparent  hover:scale-105 transition-all duration-200 p-2 rounded-xl"
+    alt="Pato"
+  />   
+</div>
 
-       
         
-
     </div>
+     
  </div>
+
 <div
-  class="fixed bottom-50 left-55 w-72 z-50">
+  class="fixed bottom-26 left-30 w-72 z-50">
         <iframe 
             style="border-radius:12px" 
             src="https://open.spotify.com/embed/playlist/640MiXX1z3Aa5W2lXn6i5C?si=7454acc34c7b4695"
